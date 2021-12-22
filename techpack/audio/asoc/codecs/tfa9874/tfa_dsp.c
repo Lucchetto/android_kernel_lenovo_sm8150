@@ -3021,7 +3021,7 @@ enum Tfa98xx_Error tfa_dev_start(struct tfa_device *tfa, int next_profile, int v
 error_exit:
 	show_current_state(tfa);
 
-	return err;
+	return (enum Tfa98xx_Error)(err);
 }
 
 enum Tfa98xx_Error tfa_dev_stop(struct tfa_device *tfa)
@@ -3042,7 +3042,7 @@ enum Tfa98xx_Error tfa_dev_stop(struct tfa_device *tfa)
 	/* disable I2S output on TFA1 devices without TDM */
 	err = tfa98xx_aec_output(tfa, 0);
 
-	return err;
+	return (enum Tfa98xx_Error)err;
 }
 
 /*
@@ -3512,7 +3512,7 @@ enum Tfa98xx_Error tfa_dev_set_state(struct tfa_device *tfa, enum tfa_state stat
 		/* Make sure the DSP is running! */
 		do {
 			err = tfa98xx_dsp_system_stable(tfa, &ready);
-			if (err != tfa_error_ok)
+			if (err != Tfa98xx_Error_Ok)
 				return err;
 			if (ready)
 				break;
@@ -3660,7 +3660,7 @@ int tfa_dev_mtp_get(struct tfa_device *tfa, enum tfa_mtp item)
 	return value;
 }
 
-enum Tfa98xx_Error  tfa_dev_mtp_set(struct tfa_device *tfa, enum tfa_mtp item, int value)
+enum Tfa98xx_Error tfa_dev_mtp_set(struct tfa_device *tfa, enum tfa_mtp item, int value)
 {
 	enum Tfa98xx_Error err = Tfa98xx_Error_Ok;
 

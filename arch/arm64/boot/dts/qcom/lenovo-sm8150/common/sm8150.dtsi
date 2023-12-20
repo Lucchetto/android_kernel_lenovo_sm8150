@@ -2,13 +2,6 @@
      android {
 	    vbmeta {
 	    };
-	    fstab {
-		     vendor {
-			    dev = "/dev/block/platform/soc/1d84000.ufshc/by-name/vendor";
-			    fsmgr_flags = "wait,avb";
-		     };
-		    /delete-node/ odm;
-	    };
      };
 };
 

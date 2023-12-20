@@ -1,7 +1,6 @@
 &firmware {
      android {
 	    vbmeta {
-		    parts = "vbmeta,recovery,boot,system,vendor,dtbo";
 	    };
 	    fstab {
 		     vendor {
